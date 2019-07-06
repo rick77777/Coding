@@ -1,0 +1,53 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	  Scanner sc = new Scanner(System.in);
+	  int n = sc.nextInt();
+	  String ph[] = new String [n];
+	  String z = " ";
+	  int i=0,j=0,flag=2;
+	  for(i=0;i<n;i++)
+	    ph[i] = sc.next();
+	  
+	  for(i=0;i<n-1;i++)
+	  {
+	    for(j=i+1;j<n;j++)
+	    {
+	      String x = ph[i];
+	      String y = ph[j];
+	      int l1 = x.length();
+	      int l2 = y.length();
+	      
+	      if(l1<l2)
+	      {
+	        String a = x.substring(0,l1);
+	        String b = y.substring(0,l1);
+	        
+	        if(a.equals(b)==true)
+	          {
+	            flag = 1;
+	            z = x;
+	          }
+	      }
+	      else if(l1>=l2)
+	      {
+	        String a = x.substring(0,l2);
+	        String b = y.substring(0,l2);
+	        if(a.equals(b)==true)
+	          {
+	            flag = 1;
+	            z = y;
+	          }
+	      }
+	      if(flag==1)
+	        break;
+	    }
+	  }
+	  if(flag==1)
+	  	System.out.println("No, collision in "+z);
+	  else
+	    System.out.println("Yes all "+n+" consistent");
+	}
+}
